@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import ToggleButton from 'components/ToggleButton';
 
+
 const Navbar = (props) => {
   return (
     <nav className="container d-flex justify-content-between align-items-baseline">

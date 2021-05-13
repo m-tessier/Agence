@@ -14,14 +14,19 @@ import Navbar from 'components/Navbar'
 const App = () => {
   const themeIsSave = localStorage['theme-light'] === 'true' ? themes.light : themes.dark;
   const [state, setState] = useState(localStorage['theme-light'] ? themeIsSave : themes.light);
+  const [card, setCard] = useState(false);
 
   const toggleTheme =() => {
     setState(state === themes.dark ? themes.light : themes.dark);
     const isSave = (state === themes.dark ? true : false);
     localStorage.setItem("theme-light", isSave);
   };
-  
 
+  const toggleCard =() => {
+    setCard(current => !current);
+  };
+
+  
   return (
     <ThemeContext.Provider value={state}>
       <div className="App h-100" style={state}>
@@ -35,7 +40,7 @@ const App = () => {
               <About />
             </Route>
             <Route path="/Works">
-              <Works />
+              <Works card={card} changeCard={toggleCard} />
             </Route>
           </Switch>
         </Router>
